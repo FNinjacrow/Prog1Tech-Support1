@@ -13,7 +13,9 @@
  */
 
 /**
- * 
+ * 4. Length
+ * 7. 
+ * 10. Boolean
  */
 
 public class SupportSystem
@@ -43,9 +45,10 @@ public class SupportSystem
 
         while(!finished) {
             String input = reader.getInput();
+            input = input.trim();
+            input = input.toLowerCase();
             
-            
-            if(input.startsWith("bye")) {
+            if(input.equals("bye")) {
                 finished = true;
             }
             else {
