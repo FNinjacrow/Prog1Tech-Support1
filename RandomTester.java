@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * Write a description of class RandomTester here.
@@ -9,6 +10,7 @@ import java.util.Random;
 public class RandomTester
 {
     private Random rand_gen;
+    private ArrayList<String> responses;
 
     /**
      * Constructor for objects of class RandomTester
@@ -16,6 +18,14 @@ public class RandomTester
     public RandomTester()
     {
         rand_gen = new Random();
+        responses = new ArrayList<>();
+        
+        responses.add("yes");
+        responses.add("no");
+        responses.add("maybe");
+        responses.add("probably");
+        responses.add("unlikely");
+        responses.add("don't know");
     }
 
     /**
@@ -35,13 +45,37 @@ public class RandomTester
         }
     }
     
-    public void throwDice()
+    public int throwDice()
     {
-        int output = rand_gen.nextInt(7);
-        
-        if(output > 0)
-        { 
-          System.out.println("Roll Result: " + output);
+        return rand_gen.nextInt(6)+1;
+    }
+    
+    public String getResponse() 
+    {
+        int choice = rand_gen.nextInt(3);
+                
+        if (choice == 0)
+        {
+            return "yes";
         }
+        else if (choice == 1)
+        {
+            return "no";
+        }
+        else
+        {
+            return "maybe";
+        } 
+    }
+    
+    public String getResponse2() 
+    {
+        int choice = rand_gen.nextInt(responses.size());
+        return responses.get(choice);        
+    }
+    
+    public int printRandomFromMax(int max)
+    {
+        return rand_gen.nextInt(max) + 1;
     }
 }

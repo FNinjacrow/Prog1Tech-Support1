@@ -18,7 +18,11 @@ import java.util.Random;
  * 4. Length
  * 7. 
  * 10. Boolean
- * 15. All numbers from 0 to 99 (100 is excluded) can be generator
+ * 15. All numbers from 0 to 99 (100 is excluded) can be generated
+ * 23. The responses will work just fine. The only thing that change is the
+ * odds of a specific response popping up. By example, you have 1/6th chance
+ * of getting a simple greeting, but if you add another response to the
+ * ArrayList, then the odds are now 1/7th.
  */
 
 public class SupportSystem
@@ -26,7 +30,6 @@ public class SupportSystem
     private InputReader reader;
     private Responder responder;
     private Random rand_gen;
-
     
     /**
      * Creates a technical support system.
@@ -57,7 +60,7 @@ public class SupportSystem
                 finished = true;
             }
             else {
-                String response = responder.generateResponse();
+                String response = responder.fillResponses();
                 System.out.println(response);
             }
         }
@@ -83,43 +86,5 @@ public class SupportSystem
     private void printGoodbye()
     {
         System.out.println("Nice talking to you. Bye...");
-    }
-    
-    public void getResponse() 
-    {
-        boolean finished = false;
-
-        printWelcome();
-        rand_gen = new Random();
-
-        while(!finished) {
-            String input = reader.getInput();
-            input = input.trim();
-            input = input.toLowerCase();
-            
-            
-            if(input.equals("bye")) {
-                finished = true;
-            }
-            else {
-            
-            int random = rand_gen.nextInt(3);
-                
-            if (random == 0)
-            {
-              System.out.println("yes");
-            }
-            if (random == 1)
-            {
-              System.out.println("no");
-            }
-            if (random == 2)
-            {
-              System.out.println("maybe");
-            }
-            }
-        }
-
-        printGoodbye();
     }
 }
