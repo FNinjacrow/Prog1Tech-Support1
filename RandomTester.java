@@ -23,6 +23,25 @@ public class RandomTester
      */
     public void printOneRandom()
     {
-        System.out.println("New interger: " + rand_gen.nextInt(1000));
+        System.out.println("New interger: " + rand_gen.nextInt(100));
+    }
+    
+    public void printMultiRandom(int howMany)
+    {
+        int count = 0;
+        while (count < howMany){
+            printOneRandom();
+            count++;
+        }
+    }
+    
+    public void throwDice()
+    {
+        int output = rand_gen.nextInt(7);
+        
+        if(output > 0)
+        { 
+          System.out.println("Roll Result: " + output);
+        }
     }
 }

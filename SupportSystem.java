@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * This class implements a technical support system. It is the top level class 
  * in this project. The support system communicates via text input/output 
@@ -16,12 +18,15 @@
  * 4. Length
  * 7. 
  * 10. Boolean
+ * 15. All numbers from 0 to 99 (100 is excluded) can be generator
  */
 
 public class SupportSystem
 {
     private InputReader reader;
     private Responder responder;
+    private Random rand_gen;
+
     
     /**
      * Creates a technical support system.
@@ -78,5 +83,43 @@ public class SupportSystem
     private void printGoodbye()
     {
         System.out.println("Nice talking to you. Bye...");
+    }
+    
+    public void getResponse() 
+    {
+        boolean finished = false;
+
+        printWelcome();
+        rand_gen = new Random();
+
+        while(!finished) {
+            String input = reader.getInput();
+            input = input.trim();
+            input = input.toLowerCase();
+            
+            
+            if(input.equals("bye")) {
+                finished = true;
+            }
+            else {
+            
+            int random = rand_gen.nextInt(3);
+                
+            if (random == 0)
+            {
+              System.out.println("yes");
+            }
+            if (random == 1)
+            {
+              System.out.println("no");
+            }
+            if (random == 2)
+            {
+              System.out.println("maybe");
+            }
+            }
+        }
+
+        printGoodbye();
     }
 }
